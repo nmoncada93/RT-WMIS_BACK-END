@@ -1,7 +1,6 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_cors import cross_origin
-# import pandas as pd
 import json
 import os
 
@@ -33,34 +32,15 @@ def get_network_stations():
         data = json.load(file)
     return jsonify(data)
 
+# [D] Health Check (opcional pero recomendado para Vercel)
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok"}), 200
 
-"""
-# [E] Endpoint para leer el archivo sphi.tmp y devolverlo como JSON
-@app.route('/api/read-sphi', methods=['GET'])
-def read_sphi():
-    try:
-        data = pd.read_csv(SPHI_FILE_PATH, sep=r'\s+', header=None)
-        data_json = data.to_json(orient='records')
-        return jsonify(json.loads(data_json))
-    except FileNotFoundError:
-        return jsonify({"error": "El archivo sphi.tmp no se encuentra"}), 404
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+# [E] Handler requerido por Vercel
+def handler(event, context):
+    return app(event, context)
 
-# [F] Endpoint para leer el archivo roti.tmp y devolverlo como JSON
-@app.route('/api/read-roti', methods=['GET'])
-def read_roti():
-    try:
-        data = pd.read_csv(ROTI_FILE_PATH, sep=r'\s+', header=None)
-        data_json = data.to_json(orient='records')
-        return jsonify(json.loads(data_json))
-    except FileNotFoundError:
-        return jsonify({"error": "El archivo roti.tmp no se encuentra"}), 404
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-"""
-
-# [Z] Ejecuta la aplicacion
+# [Z] Ejecuta la aplicacion en local
 if __name__ == '__main__':
     app.run(debug=True)
