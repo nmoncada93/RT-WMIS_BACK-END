@@ -1,0 +1,62 @@
+# Entorno virtual
+venv/
+*.pyc
+__pycache__/
+
+# Archivos de logs
+*.log
+*.out
+*.err
+
+# Archivos temporales y de caché
+*.temp
+*.cache
+*.bak
+*.swp
+*.swo
+
+# Configuración de IDEs y editores
+.vscode/
+.idea/
+*.iml
+
+# Archivos de compilación
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de entorno o configuración sensible
+*.env
+.env.*
+
+# Configuración de despliegue y runtime (Render, Heroku, etc.)
+# ⚠️ Estos archivos NO deben ignorarse para que el servicio de despliegue funcione correctamente
+# runtime.txt
+# Procfile
+
+# Paquetes descargados
+__pycache__/
+*.egg
+*.egg-info/
+dist/
+build/
+*.tar.gz
+
+# Configuración de Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Bases de datos SQLite
+*.sqlite3
+
+# Archivo de lock (si usas poetry o pipenv)
+Pipfile.lock
+poetry.lock
+
+# Archivos sensibles de despliegue (opcional)
+*.crt
+*.key
+secrets/
