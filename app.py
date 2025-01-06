@@ -32,14 +32,12 @@ def get_network_stations():
         data = json.load(file)
     return jsonify(data)
 
-# [D] Health Check (opcional pero recomendado para Vercel)
+# [D] Health Check (opcional)
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "ok"}), 200
 
-# [E] Handler requerido por Vercel
-def handler(event, context):
-    return app(event, context)
+handler = app
 
 # [Z] Ejecuta la aplicacion en local
 if __name__ == '__main__':
